@@ -44,7 +44,7 @@ SYNTHESIS_FLAGS=$(get_config_value Synthesis SynthesisFlags)
 # begin synthesis process
 if [ -f $SYNTHESIS_SCRIPT ]; then
     echo "Starting synthesis process..."
-    $VIVADO_HLS_PATH $SYNTHESIS_SCRIPT $SYNTHESIS_FLAGS
+    $VIVADO_HLS_PATH -f $SYNTHESIS_SCRIPT -tclargs $SYNTHESIS_FLAGS
 else
     echo "Synthesis script not found: $SYNTHESIS_SCRIPT"
     exit 1

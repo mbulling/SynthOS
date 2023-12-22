@@ -18,6 +18,7 @@ SynthOS is a live operating system based on CentOS 7, tailored for FPGA (Field P
 1. **Open Terminal**: Access the terminal in SynthOS.
 2. **Run Synthesis Script**:
    - Use `synthesis_project.sh` script to either run your own project or the demo project:
+   
      ```bash
      ./synthesis_project.sh
      ```

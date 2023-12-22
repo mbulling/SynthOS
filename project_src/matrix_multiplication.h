@@ -1,7 +1,7 @@
 #ifndef __MATRIX_MULTIPLICATION_H__
 #define __MATRIX_MULTIPLICATION_H__
 
-#define N 32 // matrix size (N x N)
+#define N 256 // matrix size (N x N)
 
 typedef int matrix_type;
 

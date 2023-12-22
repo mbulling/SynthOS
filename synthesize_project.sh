@@ -2,33 +2,50 @@
 
 CONFIG_FILE="synthesis_settings.cfg"
 
-# function to read value from config file
+# read from config file
 get_config_value() {
     echo $(crudini --get $CONFIG_FILE "$1" "$2")
 }
 
-# prompt user to enter github repo containing c/c++ code to be synthesized
-echo "Enter the GitHub repository URL:"
-read repo_url
+clone_repo() {
+    echo "Cloning the repository..."
+    git clone $1 project_src
+    if [ $? -ne 0 ]; then
+        echo "Failed to clone repository."
+        exit 1
+    fi
+}
 
-# clone repo onto the machine
-echo "Cloning the repository..."
-git clone $repo_url
+# use the default demo project
+use_default_project() {
+    echo "using the default matrix multiplication project..."
+}
 
-# cd into project directory
-repo_name=$(basename $repo_url .git)
-cd $repo_name
+echo "do you want to use the default matrix multiplication demo project? [y/n]"
+read use_default
 
-# read settings from config file
+if [ "$use_default" = "y" ]; then
+    use_default_project
+    cd project_src
+else
+    echo "enter the GitHub repository URL to your project code:"
+    read repo_url
+    clone_repo $repo_url
+    repo_name=$(basename $repo_url .git)
+    cd $repo_name
+fi
+
+
+# settings from config file
 VIVADO_HLS_PATH=$(get_config_value General VivadoHLSPath)
 SYNTHESIS_SCRIPT=$(get_config_value Synthesis SynthesisScript)
 SYNTHESIS_FLAGS=$(get_config_value Synthesis SynthesisFlags)
 
 # begin synthesis process
 if [ -f $SYNTHESIS_SCRIPT ]; then
-    echo "starting synthesis process..."
+    echo "Starting synthesis process..."
     $VIVADO_HLS_PATH $SYNTHESIS_SCRIPT $SYNTHESIS_FLAGS
 else
-    echo "synthesis script not found: $SYNTHESIS_SCRIPT"
+    echo "Synthesis script not found: $SYNTHESIS_SCRIPT"
     exit 1
 fi

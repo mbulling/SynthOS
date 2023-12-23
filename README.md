@@ -2,7 +2,7 @@
 
 ## Overview
 
-SynthOS is a live operating system based on CentOS 7, tailored for FPGA (Field Programmable Gate Array) synthesis using High-Level Synthesis (HLS) tools. It simplifies the process of synthesizing C/C++ code for FPGA deployment by providing a ready-to-use environment with all necessary tools pre-installed. SynthOS is ideal for use on personal computers, virtual machines, and AWS EC2 instances for enhanced computing power. The OS includes a demo project for matrix multiplication to help users get started.
+SynthOS is a live operating system based on Ubuntu Server, tailored for FPGA (Field Programmable Gate Array) synthesis using High-Level Synthesis (HLS) tools. It simplifies the process of synthesizing C/C++ code for FPGA deployment by providing a ready-to-use environment with all necessary tools pre-installed. SynthOS is ideal for use on personal computers, virtual machines, and AWS EC2 instances for enhanced computing power. The OS includes a demo project for matrix multiplication to help users get started.
 
 ## Getting Started
 
@@ -11,14 +11,14 @@ SynthOS is a live operating system based on CentOS 7, tailored for FPGA (Field P
 1. **Download SynthOS ISO Image**: Obtain the ISO image of SynthOS.
 2. **Create a Bootable USB Drive or Setup a VM**: Use the ISO to create a bootable USB drive or configure a virtual machine or AWS EC2 instance.
 3. **Boot from USB Drive or Start VM/EC2 Instance**: Boot your system from the USB or launch the VM/EC2 instance.
-4. **Login to the Instance**: The default username is ```synthos``` and the default password is ```highlevelsynthesis```.
+4. **Login to the Instance**: The default username is ```synthos``` and the default password is ```HIGHLEVELSYNTHESIS```.
 
 ### Using SynthOS
 
 1. **Open Terminal**: Access the terminal in SynthOS.
 2. **Run Synthesis Script**:
    - Use `synthesis_project.sh` script to either run your own project or the demo project:
-   
+
      ```bash
      ./synthesis_project.sh
      ```
